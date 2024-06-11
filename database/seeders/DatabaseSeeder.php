@@ -16,5 +16,6 @@ class DatabaseSeeder extends Seeder
         // basicamente: rode no banco de dados a tabela: UsuarioSeeder
         $this->call(UsuarioSeeder::class);
         $this->call(CategoriaSeeder::class);
+        $this->call(ServicoSeeder::class);
     }
 }

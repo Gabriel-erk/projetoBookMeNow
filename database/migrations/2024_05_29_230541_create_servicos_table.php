@@ -19,11 +19,11 @@ return new class extends Migration
             $table->integer("qntde_votos");
             // não é necessário colocar "8,2", q nem no nosso diagrama, pois por padrão é "8,2" alterar dependendo do contexto do projeto
             $table->decimal("valor");
-            $table->string("telefone", 20);
+            $table->string("telefone", 20)->nullable();
             $table->string("celular", 20);
             $table->string("endereco");
             $table->string("numero", 10);
-            $table->string("complemento", 45);
+            $table->string("complemento", 45)->nullable();
             $table->string("bairro", 80);
             $table->string("cidade", 80);
             $table->string("estado", 2);
