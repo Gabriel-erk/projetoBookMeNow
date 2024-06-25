@@ -40,8 +40,8 @@
                 <td>Edson Rodrigues</td>
                 <td>edson@teste.com.br</td>
                 <td>
-                    <a href="#" class="btn btn-primary">Visualizar</a>
-                    <a href="editar.php" class="btn btn-secondary">Editar</a>
+                    <a href="{{ route('usuario.show', ['id' => 2]) }}" class="btn btn-primary">Visualizar</a>
+                    <a href="{{ route('usuario.edit', ['id' => 2]) }}" class="btn btn-secondary">Editar</a>
                     <a href="#" class="btn btn-danger">Excluir</a>
                 </td>
             </tr>
