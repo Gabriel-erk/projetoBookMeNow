@@ -9,16 +9,22 @@ class SiteController extends Controller
 {
     public function home()
     {
-
+        //$servicos = Servico::with('fotos')->get();
         $servicos = Servico::all();
-        return view('home', compact('servicos'));
+
+        //dd($servicos);
+     
+       return view('home', compact('servicos')); 
+
     }
+
     public function sobreNos()
     {
         return view('sobre-nos');
     }
+
     public function contato()
     {
-        return view('contato');
+
     }
 }

@@ -13,9 +13,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // basicamente: rode no banco de dados a tabela: UsuarioSeeder
+    
         $this->call(UsuarioSeeder::class);
         $this->call(CategoriaSeeder::class);
         $this->call(ServicoSeeder::class);
+        $this->call(FotoSeeder::class);
+      
+
+      
     }
 }

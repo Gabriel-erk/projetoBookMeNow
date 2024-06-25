@@ -2,70 +2,70 @@
 <html lang="pt-br">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Login - BookMeNow</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login - BookMeNow</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
-  <style>
-    #login {
-      flex-basis: 400px;
-      flex-grow: 0;
-      flex-shrink: 1;
-      /* flex: 0 1 400px; */
+    <style>
+        #login {
+            flex-basis: 400px;
+            flex-grow: 0;
+            flex-shrink: 1;
+            /* flex: 0 1 400px; */
 
-    }
-  </style>
+        }
+    </style>
 
 </head>
 
 <body>
 
-  <div class="container">
+    <div class="container">
 
-    <header id="cabecalho" class="bg-secondary">
-      <div class="row justify-content-between align-items-center">
-        <div class="col-2">
-          <h1 class="ps-3 text-white">ADMIN</h1>
-        </div>
-        <div class="col-2 text-end pe-4">
-          <a href="logout.php" class="btn btn-primary">Sair</a>
-        </div>
-      </div>
-    </header>
+        <header id="cabecalho" class="bg-secondary">
+            <div class="row justify-content-between align-items-center">
+                <div class="col-2">
+                    <h1 class="ps-3 text-white">ADMIN</h1>
+                </div>
+                <div class="col-2 text-end pe-4">
+                    <a href="logout.php" class="btn btn-primary">Sair</a>
+                </div>
+            </div>
+        </header>
 
-    <main class="row">
+        <main class="row">
 
-      <div id="menu" class="col-md-2">
-        <nav>
-          <ul class="list-group mt-3">
+            <div id="menu" class="col-md-2">
+                <nav>
+                    <ul class="list-group mt-3">
+                        {{-- chamando a rota pelo apelido, ficando de forma dinamica, onde caso a rota sofra alguma alteração, eu não tenha que alterar cada lugar da aplicação onde a rota está, sera alterada de maneira dinamica --}}
+                        <li class="list-group-item"><a href="{{ route('dashboard') }}">Home</a></li>
+                        <li class="list-group-item"><a href="#">Categorias</a></li>
+                        <li class="list-group-item"><a href="#">Serviços</a></li>
+                        <li class="list-group-item"><a href="{{ route('usuario.index') }}">Usuários</a></li>
+                    </ul>
+                </nav>
 
-            <li class="list-group-item"><a href="#">Home</a></li>
-            <li class="list-group-item"><a href="#">Categorias</a></li>
-            <li class="list-group-item"><a href="#">Serviços</a></li>
-            <li class="list-group-item"><a href="#">Usuários</a></li>
-            
-          </ul>
-        </nav>
+            </div>
 
-      </div>
+            <div id="conteudo" class="col-md-10 mt-3">
 
-      <div id="conteudo" class="col-md-10 mt-3">
+                @yield('conteudo')
 
-       @yield('conteudo')
+            </div>
+        </main>
 
+        <footer class="mt-5 text-center bg-light p-2">
+            &copy; 2024 - Todos os direitos são reservados
+        </footer>
 
-      </div>
+    </div>
 
-    </main>
-
-    <footer class="mt-5 text-center bg-light p-2">
-      &copy; 2024 - Todos os direitos são reservados
-    </footer>
-
-  </div>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    </script>
 </body>
 
 </html>

@@ -15,21 +15,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
 
-    {{-- utilizando função "asset" do laravel, onde faz ele procurar o arquivo, independente de onde esteja, caso troque a sua pasta "pai" ele encontrará o arquivo da mesma maneira, não é necessário mudar os caminhos caso realize alguma alteração na pasta "pai", que no caso é a pasta "public" --}}
-    <link rel="stylesheet" href="{{ asset("css/owl.carousel.min.css") }}">
-    <link rel="stylesheet" href="{{ asset("css/owl.theme.default.min.css") }}">
+    <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/owl.theme.default.min.css') }}">
 
-    <link rel="stylesheet" href="{{ asset("css/main.css") }}">
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
 
 </head>
-
-<style>
-
-    body {
-        font-family: 'Poppins', sans-serif;
-    }
-    
-</style>
 
 <body>
     <header id="cabecalho" class="container">
@@ -39,7 +30,7 @@
         </div>
 
         <div id="logotipo">
-            <img src="{{ asset("img/logo.png") }}" alt="BookMeNow" height="40">
+            <img src="{{ asset('img/logo.png') }}" alt="BookMeNow" height="40">
         </div>
 
         <nav id="menu">
@@ -83,10 +74,12 @@
             </div>
         </div>
     </div>
-    
+
+
     <main class="container">
-        {{-- demarcando uma area de seção, onde vai ter algum conteudo (pode-se colocar qualquer nome para identifica-lo, neste caso, coloquei conteudo) - está dizendo que vai receber algum conteudo de algum lugar (conteúdo dinamico - ja que, o "template" de todas as guias do site será o mesmo, terá o mesmo rodapé e o mesmo header, sendo alterado somente o conteúdo principal do site, que no caso, é esta área demarcada, que irá receber o conteudo das outras páginas, que será diferente) --}}
-        @yield("conteudo")
+
+        @yield('conteudo')
+
     </main>
 
     <!-- Bloco como funciona - Atividade Futura -->
@@ -140,8 +133,8 @@
                     </a>
                 </div>
                 <div class="link-app">
-                    <img src="{{ asset("img/google-play.png") }}" alt="Baixe nosso APP Google play">
-                    <img src="{{ asset("img/app-store.png") }}" alt="Baixe nosso APP Apple Store">
+                    <img src="{{ asset('img/google-play.png') }}" alt="Baixe nosso APP Google play">
+                    <img src="{{ asset('img/app-store.png') }}" alt="Baixe nosso APP Apple Store">
                 </div>
             </div>
 
@@ -154,12 +147,16 @@
     </footer>
 
 
+
+
+
+
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
-    <script src="{{ asset("js/owl.carousel.min.js") }}"></script>
+    <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
 
-    <script src="{{ asset("js/main.js") }}"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
 </body>
 
 </html>

@@ -1,11 +1,11 @@
 <?php
- 
+
 namespace Database\Seeders;
- 
+
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
- 
+
 class FotoSeeder extends Seeder
 {
     /**
@@ -54,7 +54,7 @@ class FotoSeeder extends Seeder
                 'imagem' => asset('img/categoria-informatica.jpg'),
                 'servico_id' => 10
             ],
- 
+
         ]);
     }
 }

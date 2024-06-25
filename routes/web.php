@@ -1,24 +1,28 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\UsuarioController;
-use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
-use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
-// [SiteController::class, "home"] - dentro de SiteController, quero carregar o método home()
-Route::get('/',[SiteController::class, "home"]);
-// '/sobre-nos' - o que o usuário vai digitar na URL, então, letra minúscula - trazendo a view sobre-nos.blade.php
-Route::get('/sobre-nos',[SiteController::class, "sobreNos"]);
-// trazendo a view contato atraves do controller
-Route::get('/contato',[SiteController::class, "contato"]);
+/* 
+* ->name("nomeDaRota") 
+* atribuindo nomes as rotas pois o sistema está ficando grande, e para facilitar, e não ter que se dar o trabalho de digitar a mesma rota extensa várias vezes, atribuimos um "alias" para elas
+* utilizando o meio do professor de atribuir nomes as rotas, então ->name('nomeControlador.nomePágina)
+*/
 
-// get pois quero mostrar algo na tela
-// ao chamar na url '/admin/usuarios' ira chamar UsuarioController e depois a função index
-Route::get('/admin/usuarios', [UsuarioController::class, "index"]);
-// se estiver com o parametro id (sem $ pois é um parametro) irá chamar o método show, que mostra um único usuário (este será um sub-arquivo de /admin/usuarios) 
-Route::get('/admin/usuarios/{id}', [UsuarioController::class, "show"]);
+Route::get('/', [SiteController::class, "home"])->name('site.home');
+Route::get('/sobre-nos', [SiteController::class, "sobreNos"])->name('site.sobreNos');
+Route::get('/contato', [SiteController::class, "contato"])->name('site.contato');
 
-Route::get('/admin/dashboard', [DashboardController::class, "dashboard"]);
+Route::get('/admin/usuarios', [UsuarioController::class, "index"])->name('usuario.index');
+Route::get('/admin/usuarios/cadastrar', [UsuarioController::class, "create"])->name('usuario.create');
+// post pois são informações submetidas por formulário
+Route::post('/admin/usuarios/cadastrar/salvar', [UsuarioController::class, "store"])->name('usuario.store');
+Route::get('/admin/usuarios/editar/{id}', [UsuarioController::class, "edit"])->name('usuario.edit');
+// quando a rota tiver passando um id, irá jogar no método "show" de usuarioController (foi alocado aqui para baixo pois as rotas também funcionam em efeito cascata, ou seja, se este estiver acima de /cadastrar ou /usuarios, ao passar /cadastrar ou /usuarios ou qualquer outro, será interpretado como se estivessemos tentando passar algum parâmetro, e será jogado no metódo show, ou seja, no visualizar)
+Route::get('/admin/usuarios/visualizar/{id}', [UsuarioController::class, "show"])->name('usuario.show');
 
-Route::get('/admin/index',[UsuarioController::class, "index"] );
+
+
+Route::get('/admin/dashboard', [DashboardController::class, "dashboard"])->name('dashboard');
