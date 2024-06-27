@@ -46,5 +46,5 @@
         </div>
 
         <a href="/admin/usuarios/" class="btn btn-primary">Salvar</a>
-        <a href="/admin/usuarios/" class="btn btn-secondary">Cancelar</a>
+        <a href="{{ route('usuario.index') }}" class="btn btn-secondary">Cancelar</a>
     @endsection

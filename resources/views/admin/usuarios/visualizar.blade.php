@@ -10,18 +10,18 @@
     <table class="table table-striped">
         <tr>
             <th>ID</th>
-            <td>1</td>
+            <td>{{ $usuario->id }}</td>
         </tr>
         <tr>
             <th>Nome</th>
-            <td>gabriel erick</td>
+            <td>{{ $usuario->nome }}</td>
         </tr>
         <tr>
             <th>E-mail</th>
-            <td>gbteste@gmail.com</td>
+            <td>{{ $usuario->email }}</td>
         </tr>
     </table>
 
-    <a href="/admin/usuarios/" class="btn btn-primary">Editar</a>
-    <a href="/admin/usuarios/" class="btn btn-secondary">Cancelar</a>
+    <a href="{{ route('usuario.edit', ['id' => $usuario->id]) }}" class="btn btn-primary">Editar</a>
+    <a href="{{ route('usuario.index') }}" class="btn btn-secondary">Cancelar</a>
 @endsection
