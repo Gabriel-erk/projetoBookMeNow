@@ -17,7 +17,7 @@ class UsuarioController extends Controller
         * compact - é uma das formas de passar o conteudo da váriavel para a view - compact('usuarios') - compact analisa o escopo do método index, detecta o que posso utilizar nele, no caso estou utilizando 'usuarios', que é a variavel criada que contém todos os registros da tabela em questão (sem o $ pois daria erro) 
         * compact analisa o escopo do metodo index e procura por algo chamado 'usuarios' (que declarei no parenteses de compact - compact é uma váriavel tambem), ele irá encontrar pois declarei uma váriavel chamada $usuarios que contém todos os registros da minha tabela, e depois retorna para a minha view
         */
-        return view('admin.usuarios.index',compact('usuarios'));
+        return view('admin.usuarios.index', compact('usuarios'));
     }
 
     public function create()
@@ -31,7 +31,7 @@ class UsuarioController extends Controller
     * este metodo store aceita um parâmetro do tipo 'Request', uma classe do laravel que encapsula todos os dados da solicitação http (como dados de formulário, cookies, arquivos...no caso estou submetendo dados de formulário)
     */
     public function store(Request $request)
-    {   
+    {
 
         $request->validate([
             /* 
@@ -49,11 +49,11 @@ class UsuarioController extends Controller
         // dd($request); 
 
         User::create([
-            
+
             // $request->nome esta diretamente ligado ao campo "name" igual a "nome"
             'nome' => $request->nome,
             'email' => $request->email,
-            'password' => Hash::make($request->senha)
+            'password' => Hash::make($request->password)
 
         ]);
 
@@ -74,15 +74,37 @@ class UsuarioController extends Controller
     * atualizar informações na tela
     */
     public function edit(string $id)
-    {   
-
+    {
         $usuario = User::findOrFail($id);
         return view('admin.usuarios.editar', compact('usuario'));
     }
 
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            /* 
+            * campo da tabela => validações|validações|validações 
+            * required - estamos dizendo que é requerido, que é obrigatorio este campo
+            */
+            'nome' => 'required',
+            // unique:usuarios, email,'
+            'email' => 'required|string|email|unique:usuarios,email,'.$id,
+            // min:8 - minimo de caracteres é 8
+            'password' => 'nullable|min:8|confirmed',
+
+        ]);
+
+        $usuario = User::findOrFail($id);
+
+        $usuario->update([
+            // $request->nome esta diretamente ligado ao campo "name" igual a "nome"
+            'nome' => $request->nome,
+            'email' => $request->email,
+            // basicamente, se tiver novo registro de senha, altere, se não, mantenha o que estiver
+            'password' => $request->password ? Hash::make($request->password) : $usuario->password
+        ]);
+
+        return redirect()->route('usuario.index');
     }
 
     public function destroy(string $id)
