@@ -32,6 +32,19 @@ class UsuarioController extends Controller
     */
     public function store(Request $request)
     {   
+
+        $request->validate([
+            /* 
+            * campo da tabela => validações|validações|validações 
+            * required - estamos dizendo que é requerido, que é obrigatorio este campo
+            */
+            'nome' => 'required',
+            // unique:usuarios - tem que ser unico na nossa tabela usuarios
+            'email' => 'required|string|email|unique:usuarios',
+            // min:8 - minimo de caracteres é 8
+            'password' => 'required|min:8|confirmed',
+
+        ]);
         /* dd é para trazer um "log" das informações dentro de $request - no caso, deve conter entre as informações que ele retorna, as informações submetidas pelo meu formulário dentro de cadastrar */
         // dd($request); 
 
@@ -55,9 +68,16 @@ class UsuarioController extends Controller
         return view('admin.usuarios.visualizar', compact('usuario'));
     }
 
+    /* método editar 
+    * buscar usuário
+    * mostrar suas informações na tela
+    * atualizar informações na tela
+    */
     public function edit(string $id)
-    {
-        return view('admin.usuarios.editar');
+    {   
+
+        $usuario = User::findOrFail($id);
+        return view('admin.usuarios.editar', compact('usuario'));
     }
 
     public function update(Request $request, string $id)
