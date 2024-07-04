@@ -25,7 +25,11 @@ Route::get('/admin/usuarios/editar/{id}', [UsuarioController::class, "edit"])->n
 // quando a rota tiver passando um id, irá jogar no método "show" de usuarioController (foi alocado aqui para baixo pois as rotas também funcionam em efeito cascata, ou seja, se este estiver acima de /cadastrar ou /usuarios, ao passar /cadastrar ou /usuarios ou qualquer outro, será interpretado como se estivessemos tentando passar algum parâmetro, e será jogado no metódo show, ou seja, no visualizar)
 Route::get('/admin/usuarios/visualizar/{id}', [UsuarioController::class, "show"])->name('usuario.show');
 
-// put, verbo utilizado para quando se quer dizer que vai acontercer atualização de registro
+/*
+* put, verbo utilizado para quando se quer dizer que vai acontercer atualização de registro 
+* put e delete utilizados quando são sobre formulário 
+*/ 
 Route::put('/admin/usuarios/atualizar/{id}', [UsuarioController::class, "update"])->name('usuario.update');
+Route::delete('/admin/usuarios/deletar/{id}', [UsuarioController::class, "destroy"])->name('usuario.destroy');
 
 Route::get('/admin/dashboard', [DashboardController::class, "dashboard"])->name('dashboard');

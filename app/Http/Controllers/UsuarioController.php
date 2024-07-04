@@ -11,8 +11,9 @@ class UsuarioController extends Controller
 
     public function index()
     {
-        // User é o nosso model - all busca todos os registros da tabela
-        $usuarios = User::all();
+        // dizendo para obter 10 usuários por página
+        $usuarios = User::paginate(10);
+        // $usuariosPaginados = User::paginate(10);
         /*
         * compact - é uma das formas de passar o conteudo da váriavel para a view - compact('usuarios') - compact analisa o escopo do método index, detecta o que posso utilizar nele, no caso estou utilizando 'usuarios', que é a variavel criada que contém todos os registros da tabela em questão (sem o $ pois daria erro) 
         * compact analisa o escopo do metodo index e procura por algo chamado 'usuarios' (que declarei no parenteses de compact - compact é uma váriavel tambem), ele irá encontrar pois declarei uma váriavel chamada $usuarios que contém todos os registros da minha tabela, e depois retorna para a minha view
@@ -57,7 +58,8 @@ class UsuarioController extends Controller
 
         ]);
 
-        return redirect()->route('usuario.index');
+        // ->with('sucesso', 'Usuário cadastrado com sucesso!'); - estou passando a mensagem "Usuário cadastrado com sucesso!" cadastrado com sucesso para a página index, através da chave "sucesso", e armazenando em uma sessão graças ao with ()
+        return redirect()->route('usuario.index')->with('sucesso', 'Usuário cadastrado com sucesso!');
     }
 
     // função que vai retornar o 'visualizar', que vai trazer as informações para eu poder ver
@@ -104,11 +106,26 @@ class UsuarioController extends Controller
             'password' => $request->password ? Hash::make($request->password) : $usuario->password
         ]);
 
-        return redirect()->route('usuario.index');
+        return redirect()->route('usuario.index')->with('sucesso', 'Usuário atualizado com sucesso!');
     }
 
     public function destroy(string $id)
     {
-        //
+        try {
+            // Encontrando o usuário
+            $usuario = User::findOrFail($id);
+            // Deletando o usuário
+            $usuario->delete();
+    
+            /*
+            * O método with no Laravel é uma maneira conveniente de armazenar dados na sessão para a próxima requisição, permitindo que você passe mensagens de feedback ao usuário de forma fácil e eficaz (estou armazenando a mensagem dentro de sucesso na sessão - No contexto de uma aplicação web, as sessões permitem que você mantenha dados do usuário disponíveis em várias páginas e requisições sem precisar solicitar essas informações repetidamente. - posso consultar em uma página informações criadas em outras páginas graças a sessão)
+            * Redirecionando com mensagem de sucesso 
+            */
+            return redirect()->route('usuario.index')->with('sucesso', 'Usuário deletado com sucesso!');
+        } catch (\Exception $erro) {
+            // Redirecionando com mensagem de erro
+            return redirect()->route('usuario.index')->with('error', 'Erro ao deletar o usuário');
+        }
     }
+    
 }
