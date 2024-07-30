@@ -19,7 +19,6 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        // quais campos que o laravel permite acesso na tabela, quais campos o usuário pode alterar, garantindo maior segurança e evitando sqlInject
         'nome',
         'email',
         'password',

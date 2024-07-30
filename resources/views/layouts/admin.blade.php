@@ -40,9 +40,8 @@
             <div id="menu" class="col-md-2">
                 <nav>
                     <ul class="list-group mt-3">
-                        {{-- chamando a rota pelo apelido, ficando de forma dinamica, onde caso a rota sofra alguma alteração, eu não tenha que alterar cada lugar da aplicação onde a rota está, sera alterada de maneira dinamica --}}
                         <li class="list-group-item"><a href="{{ route('dashboard') }}">Home</a></li>
-                        <li class="list-group-item"><a href="#">Categorias</a></li>
+                        <li class="list-group-item"><a href="{{ route('categoria.index') }}">Categorias</a></li>
                         <li class="list-group-item"><a href="#">Serviços</a></li>
                         <li class="list-group-item"><a href="{{ route('usuario.index') }}">Usuários</a></li>
                     </ul>
