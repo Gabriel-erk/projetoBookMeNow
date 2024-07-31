@@ -42,7 +42,7 @@
                     <ul class="list-group mt-3">
                         <li class="list-group-item"><a href="{{ route('dashboard') }}">Home</a></li>
                         <li class="list-group-item"><a href="{{ route('categoria.index') }}">Categorias</a></li>
-                        <li class="list-group-item"><a href="#">Serviços</a></li>
+                        <li class="list-group-item"><a href="{{ route('servico.index') }}">Serviços</a></li>
                         <li class="list-group-item"><a href="{{ route('usuario.index') }}">Usuários</a></li>
                     </ul>
                 </nav>

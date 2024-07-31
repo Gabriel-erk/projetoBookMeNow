@@ -4,6 +4,7 @@ use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\ServicoController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -31,3 +32,10 @@ Route::delete('/admin/categorias/deletar/{id}', [CategoriaController::class, "de
 
 //Rotas da Seção DashBoard
 Route::get('/admin/dashboard',[DashboardController::class, "dashboard"])->name("dashboard");
+
+//Rotas da Seção Serviços
+Route::get('/admin/servicos', [ServicoController::class, "index"])->name("servico.index");
+Route::get('/admin/servicos/cadastrar', [ServicoController::class, "create"])->name("servico.create");
+Route::get('/admin/servicos/visualizar/{id}', [ServicoController::class, "show"])->name("servico.show");
+Route::get('/admin/servicos/editar/{id}', [ServicoController::class, "edit"])->name("servico.edit");
+Route::get('/admin/servicos/deletar/{id}', [ServicoController::class, "destroy"])->name("servico.destroy");
