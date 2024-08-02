@@ -31,7 +31,15 @@ class ServicoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'titulo' => 'required',
+            'descricao' => 'required'
+        ]);
+
+        Servico::create([
+            'titulo' => $request->titulo,
+            'descricao' => $request->descricao
+        ]);
     }
 
     /**
@@ -57,7 +65,10 @@ class ServicoController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        
+        $request->validate([
+            'titulo' => $request->titulo,
+            'descricao' => $request->descricao
+        ]);
     }
 
     /**
