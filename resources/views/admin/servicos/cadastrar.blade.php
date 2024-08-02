@@ -15,7 +15,7 @@
         </div>
     @endif
 
-
+        {{-- enctype="multipart/form-data" serve para dizer para o formulário que iremos ter submissão de arquivos, sem isso, podemos tentar incontaveis vezes, mas ele não será submetido --}}
     <form action="{{ route('servico.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
 
@@ -94,10 +94,11 @@
         </div>
 
         <div class="mb-3">
-            {{-- multiple, atributo que permite o usuário seleconar vários arquivos de uma vez --}}
-            <label for="imagem" class="form-label">Imagem</label>
-            <input type="file" name="imagem" class="form-control" id="imagem" placeholder="Seu Imagem"
-                value="{{ old('imagem') }}" multiple>
+            {{-- multiple, atributo que permite o usuário seleconar vários arquivos de uma vez, vai permitir enviar vários arquivos de uma vez 
+            name="foto[]", pois como vamos submeter vários arquivos, precisamos convertes este atributo para um array, para ele não submeter apenas uma foto
+            --}}
+            <label for="foto" class="form-label">Foto</label>
+            <input type="file" name="foto[]" class="form-control" id="foto" multiple>
         </div>
 
         <div class="mb-3">

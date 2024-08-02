@@ -7,15 +7,16 @@
     <table class="table table-striped">
         <tr>
             <th>ID</th>
+            {{-- trazendo um atributo de outra tabela--}}
             <td>{{ $servico->id }}</td>
         </tr>
         <tr>
             <th>Nome Usuário</th>
-            <td>{{ $servico->usuario_id }}</td>
+            <td>{{ $servico->usuario->nome }}</td>
         </tr>
         <tr>
             <th>Categoria</th>
-            <td>{{ $servico->categoria_id }}</td>
+            <td>{{ $servico->categoria->titulo }}</td>
         </tr>
 
         <tr>

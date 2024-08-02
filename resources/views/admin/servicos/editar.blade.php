@@ -22,11 +22,10 @@
                 value="{{ old('titulo', $servico->titulo) }}">
         </div>
 
-        
+
         <div class="mb-3">
-            <label for="imagem" class="form-label">Imagem</label>
-            <input type="file" name="imagem" class="form-control" id="imagem" placeholder="Seu Imagem"
-                value="{{ old('imagem', $servico->imagem) }}">
+            <label for="foto" class="form-label">Foto</label>
+            <input type="file" name="foto[]" class="form-control" id="foto">
         </div>
 
         <div class="mb-3">

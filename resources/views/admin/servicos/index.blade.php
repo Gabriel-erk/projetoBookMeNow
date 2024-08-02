@@ -50,12 +50,10 @@
                             <button type="submit" class="btn btn-danger">Excluir</button>
 
                         </form>
-
-
-
                     </td>
                 </tr>
             @endforeach
         </tbody>
     </table>
+    {{$servicos->links()}}
 @endsection

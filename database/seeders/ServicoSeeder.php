@@ -16,8 +16,6 @@ class ServicoSeeder extends Seeder
     {
         $faker = Faker::create("pt-BR");
 
-
-
         DB::table('servicos')->insert([
             'titulo' => 'Formatação de computador ',
             'descricao' => $faker->sentence(),
