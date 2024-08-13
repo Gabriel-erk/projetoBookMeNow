@@ -13,6 +13,7 @@ return [
     |
     */
 
+    // configurado no drive local
     'default' => env('FILESYSTEM_DISK', 'local'),
 
     /*
@@ -38,6 +39,7 @@ return [
 
         'public' => [
             'driver' => 'local',
+            // quando quiser que armazene de forma pública, para q o usuário veja, será armazenado nest caminho "storage/app/public"
             'root' => storage_path('app/public'),
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',

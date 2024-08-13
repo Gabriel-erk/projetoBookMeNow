@@ -29,7 +29,7 @@
 
         <div class="mb-3">
             <label for="categoria" class="form-label">Categoria</label>
-            <select name="categoria" id="categoria" class="form-control">
+            <select name="categoria_id" id="categoria_id" class="form-control">
                 <option value="1">Construção</option>
                 <option value="2">Tecnologia</option>
             </select>
