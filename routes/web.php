@@ -38,6 +38,6 @@ Route::get('/admin/servicos', [ServicoController::class, "index"])->name("servic
 Route::get('/admin/servicos/cadastrar', [ServicoController::class, "create"])->name("servico.create");
 Route::get('/admin/servicos/visualizar/{id}', [ServicoController::class, "show"])->name("servico.show");
 Route::get('/admin/servicos/editar/{id}', [ServicoController::class, "edit"])->name("servico.edit");
-Route::get('/admin/servicos/deletar/{id}', [ServicoController::class, "destroy"])->name("servico.destroy");
+Route::delete('/admin/servicos/deletar/{id}', [ServicoController::class, "destroy"])->name("servico.destroy");
 Route::post('/admin/servicos/cadastrar/salvar', [ServicoController::class, "store"])->name("servico.store");
 Route::put('/admin/servicos/atualizar/{id}', [ServicoController::class, "update"])->name("servico.update");
