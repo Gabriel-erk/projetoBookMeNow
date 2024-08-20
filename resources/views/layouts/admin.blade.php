@@ -30,7 +30,7 @@
                     <h1 class="ps-3 text-white">ADMIN</h1>
                 </div>
                 <div class="col-2 text-end pe-4">
-                    <a href="logout.php" class="btn btn-primary">Sair</a>
+                    <a href="{{ route('logout') }}" class="btn btn-primary">Sair</a>
                 </div>
             </div>
         </header>
