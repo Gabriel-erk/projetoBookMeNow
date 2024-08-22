@@ -15,7 +15,6 @@
         </div>
     @endif
 
-
     <form action="{{ route('usuario.store') }}" method="POST">
         @csrf
         <div class="mb-3">
