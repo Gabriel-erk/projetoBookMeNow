@@ -43,7 +43,7 @@ class AutenticacaoController extends Controller
         */
         return redirect()->back()->withErrors(["email" => "Usuário ou Senha inválida"]);
     }
-
+    
     public function logout(Request $request)
     {
         // realizando logout/apagando do db

@@ -53,7 +53,7 @@
                             @endforeach
                         </ul>
                     </div>
-                @endif
+                @endif  
 
             </div>
             <form method="post" action="{{ route('login') }}">
