@@ -27,5 +27,13 @@ class UsuarioSeeder extends Seeder
                 'updated_at' => now()
             ]);
         }
+        DB::table('usuarios')->insert([
+            'nome' => 'gabriel',
+            'email'=> 'obiel@gmail.com',
+            'email_verified_at' => now(),
+            'password'=> Hash::make('12345678'),
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
     }
 }
